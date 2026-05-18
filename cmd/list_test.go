@@ -67,3 +67,19 @@ func TestListAsJSON(t *testing.T) {
 		t.Errorf("expected JSON array, got: %s", out)
 	}
 }
+
+func TestCountKey(t *testing.T) {
+	dir := makeFixture(t)
+	out := execCmd(t, "count", "--dir", dir, "--key", "status")
+	if !strings.Contains(out, "draft: 1") || !strings.Contains(out, "published: 1") {
+		t.Errorf("unexpected count output: %s", out)
+	}
+}
+
+func TestCountAsJSON(t *testing.T) {
+	dir := makeFixture(t)
+	out := execCmd(t, "count", "--dir", dir, "--key", "status", "--as-json")
+	if !strings.HasPrefix(out, "{") {
+		t.Errorf("expected JSON object, got: %s", out)
+	}
+}
