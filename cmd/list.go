@@ -39,7 +39,7 @@ func runList(cmd *cobra.Command, args []string) error {
 		queryVal = v
 	}
 
-	files, err := walk.Walk(dir)
+	files, err := walk.Walk(dir, excludes)
 	if err != nil {
 		return err
 	}

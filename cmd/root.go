@@ -8,6 +8,7 @@ import (
 )
 
 var dir string
+var excludes []string
 
 var rootCmd = &cobra.Command{
 	Use:   "yamly",
@@ -33,4 +34,5 @@ func SetArgs(args []string) {
 
 func init() {
 	rootCmd.PersistentFlags().StringVar(&dir, "dir", ".", "root directory to search (default: current directory)")
+	rootCmd.PersistentFlags().StringArrayVar(&excludes, "exclude", nil, "directory name to exclude (repeatable)")
 }

@@ -24,7 +24,7 @@ func init() {
 }
 
 func runKeys(cmd *cobra.Command, args []string) error {
-	files, err := walk.Walk(dir)
+	files, err := walk.Walk(dir, excludes)
 	if err != nil {
 		return err
 	}
