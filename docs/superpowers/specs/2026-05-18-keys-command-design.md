@@ -12,7 +12,7 @@ Show all frontmatter keys found across the target directory, with a count of how
 ## Usage
 
 ```
-yamlsum keys [--dir <path>] [--as-json]
+yamly keys [--dir <path>] [--as-json]
 ```
 
 Flags:

@@ -7,10 +7,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/davison/yamlsum/cmd"
+	"github.com/davison/yamly/cmd"
 )
 
-// execCmd runs yamlsum with the given args and captures stdout.
+// execCmd runs yamly with the given args and captures stdout.
 func execCmd(t *testing.T, args ...string) string {
 	t.Helper()
 	buf := new(bytes.Buffer)

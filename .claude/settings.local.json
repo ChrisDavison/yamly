@@ -3,7 +3,15 @@
     "allow": [
       "Skill(superpowers:brainstorming)",
       "Bash(rtk read *)",
-      "Skill(superpowers:writing-plans)"
+      "Skill(superpowers:writing-plans)",
+      "Skill(superpowers:subagent-driven-development)",
+      "Skill(superpowers:using-superpowers)",
+      "Bash(go mod *)",
+      "Bash(go get *)",
+      "Bash(rtk go *)",
+      "Bash(rtk git *)",
+      "Skill(superpowers:executing-plans)",
+      "Skill(superpowers:finishing-a-development-branch)"
     ]
   }
 }

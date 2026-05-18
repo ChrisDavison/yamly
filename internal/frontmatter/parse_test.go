@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/davison/yamlsum/internal/frontmatter"
+	"github.com/davison/yamly/internal/frontmatter"
 )
 
 func TestParseBytesScalar(t *testing.T) {

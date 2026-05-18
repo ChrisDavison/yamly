@@ -1,4 +1,4 @@
-module github.com/davison/yamlsum
+module github.com/davison/yamly
 
 go 1.25.0
 

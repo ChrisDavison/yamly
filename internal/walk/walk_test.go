@@ -6,7 +6,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/davison/yamlsum/internal/walk"
+	"github.com/davison/yamly/internal/walk"
 )
 
 func TestWalkFindsMarkdown(t *testing.T) {

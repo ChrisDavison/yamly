@@ -3,7 +3,7 @@ package cmd_test
 import (
 	"testing"
 
-	"github.com/davison/yamlsum/internal/frontmatter"
+	"github.com/davison/yamly/internal/frontmatter"
 )
 
 func TestRenameKey(t *testing.T) {

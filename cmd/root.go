@@ -10,7 +10,7 @@ import (
 var dir string
 
 var rootCmd = &cobra.Command{
-	Use:   "yamlsum",
+	Use:   "yamly",
 	Short: "Inspect and edit YAML frontmatter in markdown files",
 }
 

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/davison/yamlsum/internal/frontmatter"
-	"github.com/davison/yamlsum/internal/walk"
+	"github.com/davison/yamly/internal/frontmatter"
+	"github.com/davison/yamly/internal/walk"
 	"github.com/spf13/cobra"
 )
 

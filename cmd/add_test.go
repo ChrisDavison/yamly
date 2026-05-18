@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/davison/yamlsum/cmd"
-	"github.com/davison/yamlsum/internal/frontmatter"
+	"github.com/davison/yamly/cmd"
+	"github.com/davison/yamly/internal/frontmatter"
 )
 
 func writeMD(t *testing.T, dir, name, content string) string {

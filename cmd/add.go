@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/davison/yamlsum/internal/frontmatter"
+	"github.com/davison/yamly/internal/frontmatter"
 	"github.com/spf13/cobra"
 )
 

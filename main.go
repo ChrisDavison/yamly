@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/davison/yamlsum/cmd"
+	"github.com/davison/yamly/cmd"
 )
 
 func main() {
