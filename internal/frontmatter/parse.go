@@ -14,7 +14,7 @@ var ErrNoFrontmatter = errors.New("no frontmatter found")
 
 // File holds parsed frontmatter and the document body.
 type File struct {
-	Data map[string]interface{}
+	Data map[string]any
 	body string
 }
 
@@ -37,21 +37,28 @@ func ParseBytes(content []byte) (*File, error) {
 	rest := s[4:] // skip opening "---\n"
 
 	var yamlContent, body string
-	if idx := strings.Index(rest, "\n---\n"); idx >= 0 {
-		yamlContent = rest[:idx]
-		body = rest[idx+5:] // skip "\n---\n"
-	} else if strings.HasPrefix(rest, "---\n") {
-		// Handle empty frontmatter: ---\n---\n
+	switch {
+	case strings.HasPrefix(rest, "---\n"):
+		// Empty frontmatter: ---\n---\n<body>
 		yamlContent = ""
-		body = rest[4:] // skip "---\n"
-	} else if strings.HasSuffix(rest, "\n---") {
-		yamlContent = rest[:len(rest)-4]
+		body = rest[4:]
+	case strings.HasPrefix(rest, "---"):
+		// Empty frontmatter at EOF: ---\n---
+		yamlContent = ""
 		body = ""
-	} else {
-		return nil, ErrNoFrontmatter
+	default:
+		if before, after, found := strings.Cut(rest, "\n---\n"); found {
+			yamlContent = before
+			body = after
+		} else if strings.HasSuffix(rest, "\n---") {
+			yamlContent = rest[:len(rest)-4]
+			body = ""
+		} else {
+			return nil, ErrNoFrontmatter
+		}
 	}
 
-	data := make(map[string]interface{})
+	data := make(map[string]any)
 	if err := yaml.Unmarshal([]byte(yamlContent), &data); err != nil {
 		return nil, fmt.Errorf("invalid YAML frontmatter: %w", err)
 	}
