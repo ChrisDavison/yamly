@@ -3,6 +3,7 @@ package cmd
 import (
 	"io"
 
+	flag "github.com/spf13/pflag"
 	"github.com/spf13/cobra"
 )
 
@@ -23,6 +24,11 @@ func SetOut(w io.Writer) {
 
 func SetArgs(args []string) {
 	rootCmd.SetArgs(args)
+	// Reset "changed" state on all subcommand flags so repeated Execute()
+	// calls in tests don't bleed flag values across runs.
+	for _, sub := range rootCmd.Commands() {
+		sub.Flags().VisitAll(func(f *flag.Flag) { f.Changed = false })
+	}
 }
 
 func init() {
