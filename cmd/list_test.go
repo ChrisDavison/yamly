@@ -83,3 +83,25 @@ func TestCountAsJSON(t *testing.T) {
 		t.Errorf("expected JSON object, got: %s", out)
 	}
 }
+
+func TestKeysText(t *testing.T) {
+	dir := makeFixture(t)
+	out := execCmd(t, "keys", "--dir", dir)
+	if !strings.Contains(out, "status: 2") {
+		t.Errorf("expected 'status: 2' in output, got: %s", out)
+	}
+	if !strings.Contains(out, "tags: 2") {
+		t.Errorf("expected 'tags: 2' in output, got: %s", out)
+	}
+}
+
+func TestKeysAsJSON(t *testing.T) {
+	dir := makeFixture(t)
+	out := execCmd(t, "keys", "--dir", dir, "--as-json")
+	if !strings.HasPrefix(out, "{") {
+		t.Errorf("expected JSON object, got: %s", out)
+	}
+	if !strings.Contains(out, `"status":2`) {
+		t.Errorf("expected status:2 in JSON, got: %s", out)
+	}
+}
