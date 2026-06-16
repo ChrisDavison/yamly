@@ -18,11 +18,13 @@ var countCmd = &cobra.Command{
 
 var countKey string
 var countJSON bool
+var countSplitArr bool
 
 func init() {
 	rootCmd.AddCommand(countCmd)
 	countCmd.Flags().StringVar(&countKey, "key", "", "frontmatter key to count values for (required)")
 	countCmd.Flags().BoolVar(&countJSON, "as-json", false, "output as JSON object {value: count}")
+	countCmd.Flags().BoolVar(&countSplitArr, "split-arr", false, "Split array values and count individually")
 	countCmd.MarkFlagRequired("key")
 }
 
@@ -42,7 +44,19 @@ func runCount(cmd *cobra.Command, args []string) error {
 		if !ok {
 			continue
 		}
-		counts[fmt.Sprintf("%v", fieldVal)]++
+		if countSplitArr {
+			fieldValArr, ok_arr := f.Data[countKey].([]any)
+			if ok_arr {
+				for _, thing := range fieldValArr {
+					counts[fmt.Sprintf("%v", thing)]++
+				}
+			} else {
+				counts[fmt.Sprintf("%v", fieldVal)]++
+			}
+		} else {
+			counts[fmt.Sprintf("%v", fieldVal)]++
+		}
+
 	}
 
 	type entry struct {
