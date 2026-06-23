@@ -11,7 +11,10 @@
       "Bash(rtk go *)",
       "Bash(rtk git *)",
       "Skill(superpowers:executing-plans)",
-      "Skill(superpowers:finishing-a-development-branch)"
+      "Skill(superpowers:finishing-a-development-branch)",
+      "Bash(rtk grep *)",
+      "Bash(printf -- '---\\\\ntags: go\\\\naliases: myfile\\\\ntitle: Test\\\\n---\\\\n\\\\nBody text.\\\\n')",
+      "Bash(go run *)"
     ]
   }
 }
